@@ -16,11 +16,11 @@
         <p id="smol">You stopped at: <span id="stopdate">N/A</span></p>
       </div>
     </div>
-    <br><br>
+    <br>
     <div style="text-align:center;">
     <p id="smol">Created with 💖 by <a href="https://github.com/koneko/" id="smol">Koneko</a></p>
     <p id="smol">PSST.. Got any ideas for something to add? Go <a href="https://github.com/koneko/cattime/issues/" id="smol">here</a> and send an issue.</p>
-     <p id="smol">version 1.3</p>
+      <p id="smol">version <span id="vernum"></span></p>
     </div>
   </body>
 </html>
@@ -85,4 +85,6 @@ window.onbeforeunload = function() {
 };
 // Remove navigation prompt
 window.onbeforeunload = null;
+let vernum = $("vernum")
+vernum.textContent = "v1.3.1"
 </script>
