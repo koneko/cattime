@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CatTime</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="container">
+      <br><br><br><br>
+      <p><span id="hour">0</span> : <span id="min">0</span> : <span id="sec">0</span></p>
+      <br><br><br>
+      <button id="buttonth" onclick="startstoptimer()">Start</button>
+      <div class="dates" id="dates">
+        <p id="smol">You started at: <span id="startdate">N/A</span></p>
+        <p id="smol">You stopped at: <span id="stopdate">N/A</span></p>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  let state = 0
+  let interval = null
+  document.title = "0h 0m 0s - CatTime"
+  function $(id) {
+    return document.getElementById(id)
+  }
+  let button = document.getElementById('buttonth')
+  function startstoptimer() {
+    let hour = $("hour")
+    let min = $("min")
+    let sec = $("sec")
+    if(state == 0) {
+      logDate('start')
+      state = 1
+      button.textContent = "Stop"
+
+      interval = setInterval(() => {
+      if(+sec.textContent == 60) {
+        let newmin = +min.textContent + 1
+        sec.textContent = 00
+        
+        min.textContent = newmin
+      }
+      if(+min.textContent == 60) {
+        let newhour = +hour.textContent + 1
+        min.textContent = 00
+        
+        hour.textContent = newhour
+      }
+      let newsec = +sec.textContent + 1
+      sec.textContent = newsec
+      document.title = `${hour.textContent}h ${min.textContent}m ${sec.textContent}s - CatTime`
+    }, 1000);
+    } else {
+      state = 0
+      logDate('stop')
+      button.textContent = "Start"
+      clearInterval(interval)
+    }
+
+  }
+
+  function logDate(query) {
+    let div = $("dates")
+    let startdate = $("startdate")
+    let stopdate = $('stopdate')
+    if(query == "start") {
+      let date = new Date()
+      startdate.textContent = `${date.getHours()}:${date.getMinutes()}`
+    } else if (query =="stop") {
+      let date = new Date()
+      stopdate.textContent = `${date.getHours()}:${date.getMinutes()}`
+    }
+  }
+
+</script>
