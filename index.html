@@ -16,6 +16,9 @@
         <p id="smol">You stopped at: <span id="stopdate">N/A</span></p>
       </div>
     </div>
+    <br><br>
+    <p id="smol">Created with 💖 by <a href="https://github.com/koneko/" id="smol">Koneko</a></p>
+    <p id="smol">PSST.. Got any ideas for something to add? Go <a href="https://github.com/koneko/cattime/issues/" id="smol">here</a> and send an issue.</p>
   </body>
 </html>
 <script>
@@ -73,5 +76,10 @@
       stopdate.textContent = `${date.getHours()}:${date.getMinutes()}`
     }
   }
-
+// Enable navigation prompt
+window.onbeforeunload = function() {
+    return true;
+};
+// Remove navigation prompt
+window.onbeforeunload = null;
 </script>
