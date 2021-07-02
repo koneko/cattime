@@ -41,13 +41,13 @@
       button.textContent = "Stop"
 
       interval = setInterval(() => {
-      if(+sec.textContent == 60) {
+      if(+sec.textContent == 59) {
         let newmin = +min.textContent + 1
         sec.textContent = 00
         
         min.textContent = newmin
       }
-      if(+min.textContent == 60) {
+      if(+min.textContent == 59) {
         let newhour = +hour.textContent + 1
         min.textContent = 00
         
